@@ -1,1 +1,11 @@
+# Dependency directory
 node_modules/
+
+# Logs
+*.log
+
+# IDE specific folders
+.idea
+
+# OSX
+.DS_Store
