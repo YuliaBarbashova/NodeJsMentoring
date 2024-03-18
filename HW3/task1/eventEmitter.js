@@ -34,7 +34,7 @@ class EventEmitter {
       this.off(eventName, wrapper);
     };
     this.listeners[eventName].push(wrapper);
-    return this;
+    return wrapper;
   }
 
   emit(eventName, ...args) {

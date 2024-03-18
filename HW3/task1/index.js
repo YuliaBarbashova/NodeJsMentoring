@@ -14,8 +14,13 @@ myEmitter.on('eventOne', c1); // Register for eventOne
 myEmitter.on('eventOne', c2); // Register for eventOne
 
 // Register eventOnce for one time execution
+const onceListener = myEmitter.once('eventOnce', () => console.log('eventOnce once fired'));
+
 myEmitter.once('eventOnce', () => console.log('eventOnce once fired'));
 myEmitter.once('init', () => console.log('init once fired'));
+
+//Remove eventOnce function
+myEmitter.off('eventOnce', onceListener);
 
 // Register for 'status' event with parameters
 myEmitter.on('status', (code, msg)=> console.log(`Got ${code} and ${msg}`));
