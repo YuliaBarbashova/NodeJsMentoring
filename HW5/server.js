@@ -9,14 +9,19 @@ const {
   deleteUser,
 } = require("./controllers/usersController");
 const { PATH } = require("./constants");
+const { isPathValid, updateRes } = require("./utils");
 
 const server = http.createServer((req, res) => {
   if (req.method === "GET" && req.url === PATH) {
     getUsers(req, res);
   } else if (
     req.method === "GET" &&
-    req.url.indexOf(PATH) === 0 &&
-    req.url.indexOf("/hobbies") > 0
+    isPathValid({
+      requestPath: req.url,
+      end: "/hobbies",
+      isUuid: true,
+      length: 5,
+    })
   ) {
     const userId = req.url.split("/")[3];
     getUserHobbies(req, res, userId);
@@ -24,18 +29,27 @@ const server = http.createServer((req, res) => {
     addUser(req, res);
   } else if (
     req.method === "PATCH" &&
-    req.url.indexOf(PATH) === 0 &&
-    req.url.indexOf("/hobbies") > 0
+    isPathValid({
+      requestPath: req.url,
+      end: "/hobbies",
+      isUuid: true,
+      length: 5,
+    })
   ) {
     const userId = req.url.split("/")[3];
     updateHobbies(req, res, userId);
-  } else if (req.method === "DELETE" && req.url.indexOf(PATH) === 0) {
+  } else if (
+    req.method === "DELETE" &&
+    isPathValid({
+      requestPath: req.url,
+      isUuid: true,
+      length: 4,
+    })
+  ) {
     const userId = req.url.split("/")[3];
     deleteUser(req, res, userId);
   } else {
-    res.statusCode = 404;
-    res.write({ message: `Error` });
-    res.end();
+    updateRes({ res, statusCode: 404, message: `Incorrect path` });
   }
 });
 

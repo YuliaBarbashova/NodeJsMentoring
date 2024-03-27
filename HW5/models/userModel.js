@@ -1,9 +1,8 @@
-const { v4: uuidv4 } = require("uuid");
 const path = require("path");
-
-const users = require("../data/users.json");
-const hobbies = require("../data/hobbies.json");
+const usersList = require("../data/users.json");
 const { writeDataInFile } = require("../utils");
+
+let users = usersList;
 
 const getAllUsers = () => {
   return new Promise((resolve, reject) => {
@@ -18,20 +17,15 @@ const getUserById = (userId) => {
   });
 };
 
-const createUser = (user, userHobbies) => {
+const createUser = (user) => {
   return new Promise((resolve, reject) => {
-    const newUser = { id: uuidv4(), ...user };
-    const usersList = [...users, newUser];
-    const hobbiesList = [
-      ...hobbies,
-      { id: uuidv4(), userId: newUser.id, hobbies: userHobbies },
-    ];
-    writeDataInFile(path.join(__dirname, "../data", "users.json"), usersList);
+    const updatedUsersList = [...users, user];
     writeDataInFile(
-      path.join(__dirname, "../data", "hobbies.json"),
-      hobbiesList
+      path.join(__dirname, "../data", "users.json"),
+      updatedUsersList
     );
-    resolve(newUser);
+    users = updatedUsersList;
+    resolve(user);
   });
 };
 
@@ -49,6 +43,7 @@ const updateUserHobbies = (id, updatedHobbies) => {
       path.join(__dirname, "../data", "users.json"),
       updatedUsersList
     );
+    users = updatedUsersList;
     resolve();
   });
 };
@@ -60,6 +55,7 @@ const removeUser = (id) => {
       path.join(__dirname, "../data", "users.json"),
       updatedUsersList
     );
+    users = updatedUsersList;
     resolve();
   });
 };

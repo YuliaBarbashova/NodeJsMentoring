@@ -1,6 +1,12 @@
+const { v4: uuidv4 } = require("uuid");
 const UserModel = require("../models/userModel");
 const HobbiesModel = require("../models/hobbiesModel");
-const { getReqBody, formatUserData, userNotFoundBody } = require("../utils");
+const {
+  getReqBody,
+  formatUserData,
+  userNotFoundBody,
+  updateRes,
+} = require("../utils");
 
 // @route GET /api/users
 const getUsers = async (req, res) => {
@@ -11,14 +17,17 @@ const getUsers = async (req, res) => {
       data: formatedUsers,
       error: null,
     };
-    res.writeHead(200, {
-      "Cache-Control": "public, max-age=3600",
-      "Content-Type": "application/json",
+    updateRes({
+      res,
+      statusCode: 200,
+      message: JSON.stringify(responseObject),
+      headers: {
+        "Cache-Control": "public, max-age=3600",
+        "Content-Type": "application/json",
+      },
     });
-    res.write(JSON.stringify(responseObject));
-    res.end();
   } catch (error) {
-    console.log(error);
+    updateRes({ res, statusCode: 500, message: JSON.stringify(error) });
   }
 };
 
@@ -28,30 +37,41 @@ const addUser = async (req, res) => {
     let body = await getReqBody(req);
     const { name, email, hobbies } = JSON.parse(body);
     if (!name || !email) {
-      res.writeHead(400, { "Content-Type": "application/json" });
-      res.end(
-        JSON.stringify({ message: "Invalid request: Missing required fields" })
-      );
+      updateRes({
+        res,
+        statusCode: 400,
+        message: JSON.stringify({
+          message: "Invalid request: Missing required fields",
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
     } else {
       const user = {
+        id: uuidv4(),
         name,
         email,
       };
-      const userHobbies = hobbies || [];
-      const newUser = await UserModel.createUser(user, userHobbies);
+      const userHobbies = {
+        id: uuidv4(),
+        userId: user.id,
+        hobbies: hobbies || [],
+      };
+      const newUser = await UserModel.createUser(user);
+      await HobbiesModel.createHobbies(userHobbies);
       const formatedData = formatUserData(newUser);
       const responseObject = {
         data: formatedData,
         error: null,
       };
-
-      res.statusCode = 201;
-      res.setHeader("Content-Type", "aplication/json");
-      res.write(JSON.stringify(responseObject));
-      res.end();
+      updateRes({
+        res,
+        statusCode: 201,
+        message: JSON.stringify(responseObject),
+        headers: { "Content-Type": "application/json" },
+      });
     }
   } catch (error) {
-    console.log(error);
+    updateRes({ res, statusCode: 500, message: JSON.stringify(error) });
   }
 };
 
@@ -60,24 +80,24 @@ const deleteUser = async (req, res, userId) => {
   try {
     const user = await UserModel.getUserById(userId);
     if (!user) {
-      res.statusCode = 404;
-      res.write(userNotFoundBody(userId));
-      res.end();
+      updateRes({ res, statusCode: 404, message: userNotFoundBody(userId) });
     } else {
       await UserModel.removeUser(user.id);
       await HobbiesModel.removeHobbies(user.id);
-      res.statusCode = 200;
-      res.setHeader("Content-Type", "aplication/json");
-      res.write(
-        JSON.stringify({
+      updateRes({
+        res,
+        statusCode: 200,
+        message: JSON.stringify({
           data: { success: true },
           error: null,
-        })
-      );
-      res.end();
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     }
   } catch (error) {
-    console.log(error);
+    updateRes({ res, statusCode: 500, message: JSON.stringify(error) });
   }
 };
 

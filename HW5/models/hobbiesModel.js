@@ -1,7 +1,8 @@
 const path = require("path");
-
-const hobbies = require("../data/hobbies.json");
+const hobbiesList = require("../data/hobbies.json");
 const { writeDataInFile } = require("../utils");
+
+let hobbies = hobbiesList;
 
 const getHobbiesByUserId = (userId) => {
   return new Promise((resolve, reject) => {
@@ -24,6 +25,19 @@ const updateUserHobbies = (id, newHobbies) => {
       path.join(__dirname, "../data", "hobbies.json"),
       updatedHobbiesList
     );
+    hobbies = updatedHobbiesList;
+    resolve();
+  });
+};
+
+const createHobbies = (userHobbies) => {
+  return new Promise((resolve, reject) => {
+    const updatedHobbiesList = [...hobbies, userHobbies];
+    writeDataInFile(
+      path.join(__dirname, "../data", "hobbies.json"),
+      updatedHobbiesList
+    );
+    hobbies = updatedHobbiesList;
     resolve();
   });
 };
@@ -35,6 +49,7 @@ const removeHobbies = (id) => {
       path.join(__dirname, "../data", "hobbies.json"),
       updatedHobbiesList
     );
+    hobbies = updatedHobbiesList;
     resolve();
   });
 };
@@ -42,5 +57,6 @@ const removeHobbies = (id) => {
 module.exports = {
   getHobbiesByUserId,
   updateUserHobbies,
-  removeHobbies
+  removeHobbies,
+  createHobbies,
 };
