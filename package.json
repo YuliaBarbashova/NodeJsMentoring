@@ -1,15 +1,20 @@
 {
   "scripts": {
-    "start": "nodemon index.js",
+    "develop": "nodemon HW5/server.js",
     "task1": "nodemon HW3/task1/index.js",
     "task2": "nodemon HW3/task2/withTime.js",
-    "task3": "nodemon HW3/task3/csvToJson.js"
+    "task3": "nodemon HW3/task3/csvToJson.js",
+    "start": "pm2 start HW5/server.js --name ngmp-network-app",
+    "stop": "pm2 stop ngmp-network-app"
   },
   "devDependencies": {
-    "nodemon": "^3.1.0"
+    "nodemon": "^3.1.0",
+    "pm2": "^5.3.1"
   },
   "dependencies": {
     "csvtojson": "^2.0.10",
-    "node-fetch": "^2.7.0"
+    "http": "^0.0.1-security",
+    "node-fetch": "^2.7.0",
+    "uuid": "^9.0.1"
   }
 }
