@@ -1,0 +1,53 @@
+[
+  {
+    "id": "6bff5008-be39-4f76-94a3-5da85658964c",
+    "userId": "b2502e61-5557-408a-b39d-e4abe7c000d7",
+    "hobbies": [
+      "sport",
+      "turism"
+    ]
+  },
+  {
+    "id": "6bff5008-be39-4f76-94a3-5da856742569",
+    "userId": "b2502e61-6262-408a-b39d-e4abe7c236d7",
+    "hobbies": [
+      "sport",
+      "turism",
+      "dancing",
+      "programming"
+    ]
+  },
+  {
+    "id": "6bff5008-be39-4f76-94a3-5da856364c6a",
+    "userId": "88dd1b0b-c0a5-496d-b2aa-275e69e90d24",
+    "hobbies": [
+      "dancing",
+      "sport",
+      "programming"
+    ]
+  },
+  {
+    "id": "6bff5008-be39-4f76-94a3-5da85636264c",
+    "userId": "b507cff4-f11f-4518-87b7-9ef88e87545a",
+    "hobbies": []
+  },
+  {
+    "id": "dfb3a1ec-8efe-46d7-9834-7dd87834a133",
+    "userId": "f22fe80a-8449-4f34-aeae-2c2871b6d922",
+    "hobbies": []
+  },
+  {
+    "id": "5e1bef0b-2789-4852-b533-d6987465eed3",
+    "userId": "8dff0e9c-82fa-41e0-8bc2-4c6a56e7f7fa",
+    "hobbies": [
+      "dancing",
+      "sport",
+      "programming"
+    ]
+  },
+  {
+    "id": "d2d7d889-cbbf-4976-bd79-7ebdc861d6e4",
+    "userId": "e463570f-733d-4069-a298-c309813c2579",
+    "hobbies": []
+  }
+]
