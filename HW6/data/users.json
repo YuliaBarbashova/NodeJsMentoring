@@ -1,0 +1,50 @@
+[
+  {
+    "id": "b2502e61-5557-408a-b39d-e4abe7c000d7",
+    "email": "vvv@hh.mm",
+    "password": "hugbjnn;lilgvj",
+    "role": "user"
+  },
+  {
+    "id": "admin",
+    "email": "admin@hh.mm",
+    "password": "kjhroiger",
+    "role": "admin"
+  },
+  {
+    "id": "0fe36d16-49bc-4aab-a227-f84df899a6cb",
+    "email": "tyukyukyf@hh.mm",
+    "password": "rtjtjyjtyj",
+    "role": "user"
+  },
+  {
+    "id": "b507cff4-f11f-4518-87b7-9ef88e87545a",
+    "email": "kkioi@hh.mm",
+    "password": "afafwd",
+    "role": "user"
+  },
+  {
+    "id": "f22fe80a-8449-4f34-aeae-2c2871b6d922",
+    "email": "uoihl@hh.mm",
+    "password": "452352825",
+    "role": "user"
+  },
+  {
+    "id": "8dff0e9c-82fa-41e0-8bc2-4c6a56e7f7fa",
+    "email": "46758579@hh.mm",
+    "password": "gsz",
+    "role": "user"
+  },
+  {
+    "id": "e463570f-733d-4069-a298-c309813c2579",
+    "email": "u;zdfgzdfbzh@hh.mm",
+    "password": "njlgvj",
+    "role": "user"
+  },
+  {
+    "id": "4c98974d-4483-454c-a8a9-3239fe036d91",
+    "email": "ann.jones@epam.com",
+    "password": "DDQldls?kdpw0fk",
+    "role": "admin"
+  }
+]

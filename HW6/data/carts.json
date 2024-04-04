@@ -1,0 +1,30 @@
+[
+  {
+    "id": "d7e4b7c0-5fa4-43ed-9064-312c36d1befc",
+    "userId": "f22fe80a-8449-4f34-aeae-2c2871b6d922",
+    "isDeleted": false,
+    "items": [
+      {
+        "product": {
+          "id": "6bff5008-be39-4f76-94a3-5da856364c6a",
+          "title": "Book3",
+          "description": "A very interesting book",
+          "price": 200
+        },
+        "count": 3
+      }
+    ]
+  },
+  {
+    "id": "1434fec6-cd85-420d-95c0-eee2301a851d",
+    "userId": "b507cff4-f11f-4518-87b7-9ef88e87545a",
+    "isDeleted": true,
+    "items": []
+  },
+  {
+    "id": "62f1cb40-5d41-4097-b0b5-c060f291bd37",
+    "userId": "0fe36d16-49bc-4aab-a227-f84df899a6cb",
+    "isDeleted": true,
+    "items": []
+  }
+]
