@@ -1,5 +1,17 @@
 [
   {
+    "id": "e25039e1-2cda-4f91-adb8-e09e64260e61",
+    "userId": "0fe36d16-49bc-4aab-a227-f84df899a6cb",
+    "isDeleted": false,
+    "items": []
+  },
+  {
+    "id": "d7e4b7c0-5fa4-43ed-9064-312c36d741fc",
+    "userId": "b507cff4-f11f-4518-87b7-9ef88e87545a",
+    "isDeleted": true,
+    "items": []
+  },
+  {
     "id": "d7e4b7c0-5fa4-43ed-9064-312c36d1befc",
     "userId": "f22fe80a-8449-4f34-aeae-2c2871b6d922",
     "isDeleted": false,
@@ -12,19 +24,16 @@
           "price": 200
         },
         "count": 3
+      },
+      {
+        "product": {
+          "id": "51422fcd-0366-4186-ad5b-c23059b6f64f",
+          "title": "Book1",
+          "description": "A very interesting book",
+          "price": 100
+        },
+        "count": 12
       }
     ]
-  },
-  {
-    "id": "1434fec6-cd85-420d-95c0-eee2301a851d",
-    "userId": "b507cff4-f11f-4518-87b7-9ef88e87545a",
-    "isDeleted": true,
-    "items": []
-  },
-  {
-    "id": "62f1cb40-5d41-4097-b0b5-c060f291bd37",
-    "userId": "0fe36d16-49bc-4aab-a227-f84df899a6cb",
-    "isDeleted": true,
-    "items": []
   }
 ]

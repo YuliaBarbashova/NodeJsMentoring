@@ -6,7 +6,7 @@
     "task1": "nodemon HW3/task1/index.js",
     "task2": "nodemon HW3/task2/withTime.js",
     "task3": "nodemon HW3/task3/csvToJson.js",
-    "start": "pm2 start HW6/index.ts --name my-app --interpreter ./node_modules/.bin/ts-node",
+    "start": "pm2 start npm --name my-app -- run develop",
     "stop": "pm2 stop my-app"
   },
   "devDependencies": {

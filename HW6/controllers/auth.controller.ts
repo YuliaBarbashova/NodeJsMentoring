@@ -23,7 +23,7 @@ AuthController.post(
       )) as Partial<UserEntity>;
 
       delete user.password;
-      return res.status(200).json({ data: user, error: null });
+      return res.status(201).json({ data: user, error: null });
     } catch (err) {
       next(err);
     }

@@ -11,13 +11,10 @@ CartController.get("/", authMiddleware, async (req, res, next) => {
   const userId = req.headers["x-user-id"] as string;
 
   try {
-    const cart: CartEntity | undefined = await CartService.getUserCart(userId);
+    let cart: CartEntity | undefined = await CartService.getUserCart(userId);
 
     if (!cart) {
-      return res.status(404).json({
-        data: null,
-        error: { message: "User's cart not found" },
-      });
+      cart = await CartService.createCart(userId);
     }
 
     return res.status(200).json({
@@ -78,14 +75,7 @@ CartController.delete("/", authMiddleware, async (req, res, next) => {
   const userId = req.headers["x-user-id"] as string;
 
   try {
-    const success = await CartService.clearCart(userId);
-
-    if (!success) {
-      return res.status(404).json({
-        data: null,
-        error: { message: "User's cart not found" },
-      });
-    }
+    await CartService.clearCart(userId);
 
     return res.status(200).json({
       data: { success: true },

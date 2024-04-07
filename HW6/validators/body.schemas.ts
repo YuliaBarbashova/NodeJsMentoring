@@ -2,7 +2,7 @@ import Joi from "joi";
 
 export const cartSchema = Joi.object({
   productId: Joi.string().required(),
-  count: Joi.number().integer().min(0).required(),
+  count: Joi.number().strict().integer().min(0).required(),
 });
 
 export const newUserSchema = Joi.object({
