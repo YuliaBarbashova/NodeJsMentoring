@@ -1,20 +1,33 @@
 {
+  "name": "nodejs-mentoring",
+  "type": "module",
   "scripts": {
-    "develop": "nodemon HW5/server.js",
+    "develop": "nodemon HW6/index.ts",
     "task1": "nodemon HW3/task1/index.js",
     "task2": "nodemon HW3/task2/withTime.js",
     "task3": "nodemon HW3/task3/csvToJson.js",
-    "start": "pm2 start HW5/server.js --name ngmp-network-app",
-    "stop": "pm2 stop ngmp-network-app"
+    "start": "pm2 start npm --name my-app -- run develop",
+    "stop": "pm2 stop my-app"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/node": "^20.12.2",
+    "@types/uuid": "^9.0.8",
     "nodemon": "^3.1.0",
     "pm2": "^5.3.1"
   },
   "dependencies": {
     "csvtojson": "^2.0.10",
+    "express": "^4.19.2",
+    "express-joi-validation": "^5.0.1",
     "http": "^0.0.1-security",
+    "joi": "^17.12.2",
+    "jsonwebtoken": "^9.0.2",
     "node-fetch": "^2.7.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3",
     "uuid": "^9.0.1"
   }
 }
