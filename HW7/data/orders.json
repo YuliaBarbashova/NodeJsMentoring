@@ -1,0 +1,88 @@
+[
+  {
+    "id": "dffd6fa8-be6b-47f6-acff-455612620ac2",
+    "userId": "0fe36d16-49bc-4aab-a227-f84df899a6cb",
+    "cartId": "1434fec6-cd85-420d-95c0-eee2301a971d",
+    "items": [
+      {
+        "product": {
+          "id": "6bff5008-be39-4f76-94a3-5da856742569",
+          "title": "Book2",
+          "description": "A very interesting book",
+          "price": 105
+        },
+        "count": 2
+      }
+    ],
+    "payment": {
+      "type": "paypal"
+    },
+    "delivery": {
+      "type": "post"
+    },
+    "comments": "",
+    "status": "created",
+    "total": 2
+  },
+  {
+    "userId": "0fe36d16-49bc-4aab-a227-f84df899a6cb",
+    "cartId": "1434fec6-cd85-420d-95c0-eee2301a971d",
+    "items": [],
+    "status": "created",
+    "total": 0,
+    "id": "e035e2b1-eb8a-482d-8c99-546523a11e2a"
+  },
+  {
+    "userId": "b507cff4-f11f-4518-87b7-9ef88e87545a",
+    "cartId": "1434fec6-cd85-420d-95c0-eee2301a851d",
+    "items": [],
+    "status": "created",
+    "total": 0,
+    "id": "1526b19a-46a8-4095-a561-97525220c8a8"
+  },
+  {
+    "userId": "0fe36d16-49bc-4aab-a227-f84df899a6cb",
+    "cartId": "62f1cb40-5d41-4097-b0b5-c060f291bd37",
+    "items": [
+      {
+        "product": {
+          "id": "6bff5008-be39-4f76-94a3-5da856364c6a",
+          "title": "Book3",
+          "description": "A very interesting book",
+          "price": 200
+        },
+        "count": 3
+      },
+      {
+        "product": {
+          "id": "51422fcd-0366-4186-ad5b-c23059b6f64f",
+          "title": "Book1",
+          "description": "A very interesting book",
+          "price": 100
+        },
+        "count": 3
+      }
+    ],
+    "status": "created",
+    "total": 900,
+    "id": "84d25b13-d72c-4998-9dd6-d991b026b8d4"
+  },
+  {
+    "userId": "b507cff4-f11f-4518-87b7-9ef88e87545a",
+    "cartId": "d7e4b7c0-5fa4-43ed-9064-312c36d741fc",
+    "items": [
+      {
+        "product": {
+          "id": "6bff5008-be39-4f76-94a3-5da856364c6a",
+          "title": "Book3",
+          "description": "A very interesting book",
+          "price": 200
+        },
+        "count": 3
+      }
+    ],
+    "status": "created",
+    "total": 600,
+    "id": "a2a74d36-ecc9-4d51-bbb5-6e285ec62723"
+  }
+]
