@@ -9,7 +9,7 @@ export const createNewCart = (id: string): Promise<CartEntity> => {
   return CartModel.createCart(id);
 };
 
-export const updateCardByUserId = (
+export const updateCartByUserId = (
   cart: CartEntity,
   product: ProductEntity,
   count: CartItemEntity["count"]
@@ -17,6 +17,6 @@ export const updateCardByUserId = (
   return CartModel.updateCart(cart, product, count);
 };
 
-export const deleteCardByUserId = (cart: CartEntity) => {
+export const deleteCartByUserId = (cart: CartEntity) => {
   return CartModel.clearCart(cart);
 };

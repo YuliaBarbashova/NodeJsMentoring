@@ -2,23 +2,17 @@ import Product from "./schemas/product.schema.ts";
 
 import { ProductEntity } from "../types/index.ts";
 
-const getProductById = (
-  productId: string
-): Promise<ProductEntity | null> => {
-  return new Promise((resolve, reject) => {
-    const product = Product.findOne({ _id: productId });
-    resolve(product);
-  });
+const getProductById = async (productId: string): Promise<ProductEntity | null> => {
+  const product = await Product.findOne({ _id: productId });
+  return product;
 };
 
-const getAllProducts = (): Promise<ProductEntity[] | undefined> => {
-  return new Promise((resolve, reject) => {
-    const products = Product.find();
-    resolve(products);
-  });
+const getAllProducts = async (): Promise<ProductEntity[] | undefined> => {
+  const products = await Product.find();
+  return products;
 };
 
 export const ProductrModel = {
   getProductById,
-  getAllProducts
+  getAllProducts,
 };

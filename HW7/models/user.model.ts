@@ -2,37 +2,31 @@ import User from "./schemas/user.schema.ts";
 
 import { UserEntity } from "../types/index.ts";
 
-const getUserById = (userId: string): Promise<UserEntity | null> => {
-  return new Promise((resolve, reject) => {
-    const user = User.findOne({ _id: userId });
-    resolve(user);
-  });
+const getUserById = async (userId: string): Promise<UserEntity | null> => {
+  const user = await User.findOne({ _id: userId });
+  return user;
 };
 
-const getUserByCredentials = (
+const getUserByCredentials = async (
   email: string,
   password: string
 ): Promise<UserEntity | null> => {
-  return new Promise((resolve, reject) => {
-    const user = User.findOne({ email, password });
-    resolve(user);
-  });
+  const user = await User.findOne({ email, password });
+  return user;
 };
 
-const addNewUser = (
+const addNewUser = async (
   email: string,
   password: string,
   role: string
 ): Promise<UserEntity> => {
-  return new Promise((resolve, reject) => {
-    const user = new User({ email, password, role });
-    const savedUser = user.save();
-    resolve(savedUser);
-  });
+  const user = new User({ email, password, role });
+  const savedUser = await user.save();
+  return savedUser;
 };
 
 export const UserModel = {
   getUserById,
   getUserByCredentials,
-  addNewUser
+  addNewUser,
 };

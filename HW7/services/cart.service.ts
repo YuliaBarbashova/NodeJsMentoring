@@ -1,8 +1,8 @@
 import {
   getCartByUserId,
   createNewCart,
-  updateCardByUserId,
-  deleteCardByUserId,
+  updateCartByUserId,
+  deleteCartByUserId,
   createNewOrder,
   findProduct,
 } from "../repositories/index.ts";
@@ -37,9 +37,8 @@ const updateUserCart = async (
   if (!cart) {
     cart = await createCart(userId);
   }
-  console.log('product', product);
 
-  cart = await updateCardByUserId(cart, product, count);
+  cart = await updateCartByUserId(cart, product, count);
 
   return cart;
 };
@@ -49,7 +48,7 @@ const clearCart = async (userId: string): Promise<CartEntity | null> => {
   if (!cart) {
     throw new Error("Cart not found");
   }
-  return deleteCardByUserId(cart);
+  return deleteCartByUserId(cart);
 };
 
 const createOrder = async (
@@ -64,7 +63,7 @@ const createOrder = async (
   }
 
   return createNewOrder(cart, payment, delivery, comments).then((order) => {
-    deleteCardByUserId(cart);
+    deleteCartByUserId(cart);
     return order;
   });
 };
