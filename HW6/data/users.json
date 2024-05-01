@@ -46,5 +46,11 @@
     "email": "ann.jones@epam.com",
     "password": "DDQldls?kdpw0fk",
     "role": "admin"
+  },
+  {
+    "id": "2ba47ef7-2af0-443a-abae-d17d84110692",
+    "email": "ann.jones@epam.com",
+    "password": "DDQldls?kdpw0fk",
+    "role": "admin"
   }
 ]
