@@ -1,7 +1,8 @@
-import { findUserByCreds, createUser } from "../repositories/index.ts";
+import { findUser, createUser } from "../repositories/index.ts";
+import { UserEntity } from "../types/index.ts";
 
-const getUser = (email: string, password: string) => {
-    return findUserByCreds(email, password);
+const getUser = (props:Partial<UserEntity>) => {
+    return findUser(props);
 }
 
 const createNewUser = (email: string, password: string, role: string) => {

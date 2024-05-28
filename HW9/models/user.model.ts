@@ -7,11 +7,10 @@ const getUserById = async (userId: string): Promise<UserEntity | null> => {
   return user;
 };
 
-const getUserByCredentials = async (
-  email: string,
-  password: string
+const getUser = async (
+  props:Partial<UserEntity>
 ): Promise<UserEntity | null> => {
-  const user = await User.findOne({ email, password });
+  const user = await User.findOne({...props});
   return user;
 };
 
@@ -27,6 +26,6 @@ const addNewUser = async (
 
 export const UserModel = {
   getUserById,
-  getUserByCredentials,
+  getUser,
   addNewUser,
 };

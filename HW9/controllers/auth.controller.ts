@@ -1,5 +1,6 @@
 import express = require("express");
 import jwt from "jsonwebtoken";
+import bcrypt from "bcryptjs";
 
 import { UserService } from "../services/user.service.ts";
 import {
@@ -16,12 +17,22 @@ AuthController.post(
   validateBody(newUserSchema),
   async (req, res, next) => {
     try {
+      const { email, password, role } = req.body;
+      const oldUser = await UserService.getUser({ email });
+      if (oldUser) {
+        return res.status(409).send("User Already Exist. Please Login");
+      }
+      const encryptedPassword = await bcrypt.hash(password, 10);
       const user = (await UserService.createNewUser(
-        req.body.email,
-        req.body.password,
-        req.body.role
+        email.toLowerCase(),
+        encryptedPassword,
+        role
       )) as Partial<UserEntity>;
-      return res.status(201).json({ data: user, error: null });
+
+      return res.status(201).json({
+        data: { role: user.role, email: user.email, id: user._id },
+        error: null,
+      });
     } catch (err) {
       next(err);
     }
@@ -33,18 +44,26 @@ AuthController.post(
   validateBody(currentUserSchema),
   async (req, res, next) => {
     try {
-      const user = await UserService.getUser(req.body.email, req.body.password);
-
-      if (!user) {
-        return res.status(404).send({
-          data: null,
-          error: { message: "No user with such email or password" },
-        });
-      }
-      const token = jwt.sign({ userId: user._id }, "SECRET_KEY", {
-        expiresIn: "1h",
+      const user = await UserService.getUser({
+        email: req.body.email,
       });
-      res.json({ data: { token }, error: null });
+
+      if (user && (await bcrypt.compare(req.body.password, user.password))) {
+        const token = jwt.sign(
+          { id: user._id, email: user.email, role: user.role },
+          process.env.TOKEN_KEY!,
+          {
+            expiresIn: "2h",
+          }
+        );
+
+        return res.status(200).json({ data: { token }, error: null });
+      }
+
+      return res.status(404).send({
+        data: null,
+        error: { message: "No user with such email or password" },
+      });
     } catch (err) {
       next(err);
     }

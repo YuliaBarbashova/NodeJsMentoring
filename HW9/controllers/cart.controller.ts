@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { CartService } from "../services/cart.service.ts";
 import { authMiddleware } from "../middlewares/authMiddleware.ts";
+import { isAdmin } from "../middlewares/isAdmin.ts";
 import { CartEntity, OrderEntity } from "../types/index.ts";
 import { validateBody, cartSchema } from "../validators/index.ts";
 
@@ -45,7 +46,6 @@ CartController.put(
         productId,
         count
       );
-      console.log(cart?.items[0].product);
       return res.status(200).json({
         data: {
           cart,
@@ -71,8 +71,8 @@ CartController.put(
   }
 );
 
-CartController.delete("/", authMiddleware, async (req, res, next) => {
-  const userId = req.headers["x-user-id"] as string;
+CartController.delete("/", authMiddleware, isAdmin, async (req, res, next) => {
+  const { userId }: { userId: string} = req.body;
 
   try {
     await CartService.clearCart(userId);
