@@ -25,7 +25,6 @@ const updateCart = async (
   let updatedItems = [...cart.items];
 
   const existingItemIndex = updatedItems.findIndex((item) => {
-    console.log("item", item);
     return item.product._id === product._id;
   });
   if (existingItemIndex > -1) {
