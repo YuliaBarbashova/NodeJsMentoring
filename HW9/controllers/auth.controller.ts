@@ -9,6 +9,7 @@ import {
   currentUserSchema,
 } from "../validators/index.ts";
 import { UserEntity } from "../types/index.ts";
+import { logger } from "../logger.ts";
 
 const AuthController = express.Router();
 
@@ -20,6 +21,7 @@ AuthController.post(
       const { email, password, role } = req.body;
       const oldUser = await UserService.getUser({ email });
       if (oldUser) {
+        logger.error("User Already Exist. Please Login");
         return res.status(409).send("User Already Exist. Please Login");
       }
       const encryptedPassword = await bcrypt.hash(password, 10);

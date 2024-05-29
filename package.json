@@ -2,12 +2,13 @@
   "name": "nodejs-mentoring",
   "type": "module",
   "scripts": {
-    "develop": "nodemon HW9/index.ts",
+    "start": "nodemon HW9/index.ts",
     "task1": "nodemon HW3/task1/index.js",
     "task2": "nodemon HW3/task2/withTime.js",
     "task3": "nodemon HW3/task3/csvToJson.js",
-    "start": "pm2 start npm --name my-app -- run develop",
-    "stop": "pm2 stop my-app"
+    "start:dev": "cross-env NODE_ENV=development npm run start",
+    "start:prod": "cross-env NODE_ENV=production npm run start",
+    "start:test": "cross-env NODE_ENV=test npm run start"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
@@ -17,6 +18,7 @@
     "@types/mongoose": "^5.11.97",
     "@types/node": "^20.12.2",
     "@types/uuid": "^9.0.8",
+    "cross-env": "^7.0.3",
     "nodemon": "^3.1.0",
     "pm2": "^5.3.1"
   },
@@ -26,14 +28,17 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "express-joi-validation": "^5.0.1",
+    "express-winston": "^4.2.0",
     "http": "^0.0.1-security",
     "joi": "^17.12.2",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.0",
+    "net": "^1.0.2",
     "node-fetch": "^2.7.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "winston": "^3.13.0"
   }
 }

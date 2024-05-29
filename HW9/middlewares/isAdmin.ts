@@ -1,5 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
+import { logger } from "../logger.ts";
 export interface CurrentUser {
   id: string;
   email: string;
@@ -17,6 +18,7 @@ export const isAdmin = async (
   const currentUser = (req as unknown as MyRequest).user;
 
   if (currentUser?.role !== "admin") {
+    logger.error("Only admins can remove carts");
     return res.status(403).send("Only admins can remove carts");
   }
   next();
